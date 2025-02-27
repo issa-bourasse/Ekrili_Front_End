@@ -1,7 +1,7 @@
 import { UsersTable } from "@/components/users-table"
 import DashboardLayout from "@/components/dashboard-layout"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { sidebarItems } from "@/lib/admin-sidebar-items"
+import { adminSidebarItems } from "@/lib/sidebar-items"
 
 const users = [
   { id: "1", name: "John Doe", email: "john@example.com", role: "Renter", status: "Active" },
@@ -18,7 +18,7 @@ export default function AdminUsersPage() {
   }
 
   return (
-    <DashboardLayout sidebarItems={sidebarItems} userRole="Admin">
+    <DashboardLayout sidebarItems={adminSidebarItems} userRole="Admin">
       <Card>
         <CardHeader>
           <CardTitle>Manage Users</CardTitle>
@@ -30,4 +30,3 @@ export default function AdminUsersPage() {
     </DashboardLayout>
   )
 }
-

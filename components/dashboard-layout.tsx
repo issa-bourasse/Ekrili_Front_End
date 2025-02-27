@@ -1,6 +1,6 @@
 "use client"
 
-import { type ReactNode, useEffect, useState } from "react"
+import { type ReactNode } from "react"
 import { Button } from "@/components/ui/button"
 import { ScrollArea } from "@/components/ui/scroll-area"
 import Link from "next/link"
@@ -19,56 +19,61 @@ interface DashboardLayoutProps {
   userRole: string
 }
 
-export default function DashboardLayout({ children, sidebarItems, userRole }: DashboardLayoutProps) {
+export default function DashboardLayout({
+  children,
+  sidebarItems,
+  userRole,
+}: DashboardLayoutProps) {
   const { theme, setTheme } = useTheme()
-  const [mounted, setMounted] = useState(false)
-
-  useEffect(() => setMounted(true), [])
-
-  if (!mounted) return null
 
   return (
-    <div className="flex h-screen bg-gray-100 dark:bg-gray-900">
+    <div className="flex min-h-screen">
       {/* Sidebar */}
-      <aside className="w-64 bg-white dark:bg-gray-800 shadow-md">
-        <div className="p-4">
-          <Link href="/" className="flex items-center space-x-2 text-blue-600 dark:text-blue-400">
-            <Home className="w-6 h-6" />
-            <span className="text-lg font-semibold">Ekrili</span>
-          </Link>
-        </div>
-        <ScrollArea className="h-[calc(100vh-8rem)] py-4">
-          <nav className="space-y-2 px-4">
-            {sidebarItems.map((item, index) => (
-              <Link key={index} href={item.href}>
-                <Button variant="ghost" className="w-full justify-start">
-                  {item.icon}
-                  <span className="ml-2">{item.label}</span>
-                </Button>
-              </Link>
-            ))}
-          </nav>
-        </ScrollArea>
-        <div className="p-4">
-          <Button variant="outline" className="w-full">
-            <LogOut className="mr-2 h-4 w-4" /> Log out
-          </Button>
-        </div>
-      </aside>
-
-      {/* Main content */}
-      <main className="flex-1 overflow-y-auto bg-gray-100 dark:bg-gray-900">
-        <header className="bg-white dark:bg-gray-800 shadow-sm">
-          <div className="max-w-7xl mx-auto py-4 px-4 sm:px-6 lg:px-8 flex justify-between items-center">
-            <h1 className="text-2xl font-semibold text-gray-900 dark:text-white">{userRole} Dashboard</h1>
-            <Button variant="ghost" size="icon" onClick={() => setTheme(theme === "light" ? "dark" : "light")}>
-              {theme === "light" ? <Moon className="h-5 w-5" /> : <Sun className="h-5 w-5" />}
-            </Button>
+      <div className="hidden border-r bg-background md:block w-64">
+        <div className="flex h-full flex-col">
+          <div className="border-b px-6 py-4">
+            <Link href="/" className="flex items-center gap-2 font-semibold">
+              <Home className="h-6 w-6" />
+              <span>Ekrili</span>
+            </Link>
           </div>
-        </header>
-        <div className="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">{children}</div>
-      </main>
+          <ScrollArea className="flex-1 px-3 py-2">
+            <div className="space-y-1">
+              {sidebarItems.map((item) => (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className="flex items-center gap-3 rounded-lg px-3 py-2 text-sm transition-all hover:bg-accent"
+                >
+                  {item.icon}
+                  {item.label}
+                </Link>
+              ))}
+            </div>
+          </ScrollArea>
+          <div className="border-t p-4">
+            <div className="flex items-center gap-4">
+              <Button
+                variant="ghost"
+                size="icon"
+                onClick={() => setTheme(theme === "light" ? "dark" : "light")}
+                className="h-9 w-9"
+              >
+                <Sun className="h-4 w-4 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
+                <Moon className="absolute h-4 w-4 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
+                <span className="sr-only">Toggle theme</span>
+              </Button>
+              <Button variant="ghost" size="icon" className="h-9 w-9">
+                <LogOut className="h-4 w-4" />
+                <span className="sr-only">Log out</span>
+              </Button>
+              <span className="ml-auto text-sm font-medium">{userRole}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      {/* Main content */}
+      <main className="flex-1">{children}</main>
     </div>
   )
 }
-

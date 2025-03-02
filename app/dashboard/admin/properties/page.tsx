@@ -7,9 +7,8 @@ import { adminSidebarItems } from "@/lib/sidebar-items"
 // Use the correct export name for dynamic rendering
 export const dynamic = "force-dynamic"
 
-// Use dynamic import with ssr: false
+// Use dynamic import
 const ManageProperties = dynamic(() => import("@/components/admin/manage-properties"), {
-  ssr: false,
   loading: () => <div className="flex items-center justify-center h-screen">Loading properties...</div>
 })
 

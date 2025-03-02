@@ -7,9 +7,8 @@ import DashboardLayout from "@/components/dashboard-layout"
 // Use the correct export name for dynamic rendering
 export const dynamic = "force-dynamic"
 
-// Use dynamic import with ssr: false to prevent server-side rendering
+// Use dynamic import
 const RenterDashboard = dynamic(() => import("@/components/renter-dashboard"), {
-  ssr: false,
   loading: () => <div className="flex items-center justify-center h-screen">Loading dashboard...</div>
 })
 

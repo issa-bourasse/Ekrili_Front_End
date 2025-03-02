@@ -1,7 +1,6 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
 import { Button } from "@/components/ui/button"
-import "@/styles/globals.css"
 
 const messages = [
   { id: "1", from: "John Doe", subject: "Booking Inquiry", date: "2023-08-01", read: false },
@@ -56,4 +55,3 @@ export default function Messages() {
     </Card>
   )
 }
-

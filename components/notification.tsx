@@ -32,7 +32,7 @@ export function Notification({ message, type, duration = 5000, onClose }: Notifi
     >
       <div className="flex items-center justify-between">
         <p>{message}</p>
-        <button onClick={() => setIsVisible(false)} className="ml-4">
+        <button onClick={() => { setIsVisible(false); onClose(); }} className="ml-4">
           <X size={16} />
         </button>
       </div>

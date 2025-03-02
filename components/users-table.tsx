@@ -1,3 +1,5 @@
+"use client"
+
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
 import { Button } from "@/components/ui/button"
 
@@ -24,7 +26,7 @@ export function UsersTable({ users, onEdit, onDelete }: UsersTableProps) {
           <TableHead>Email</TableHead>
           <TableHead>Role</TableHead>
           <TableHead>Status</TableHead>
-          <TableHead>Actions</TableHead>
+          <TableHead className="text-right">Actions</TableHead>
         </TableRow>
       </TableHeader>
       <TableBody>
@@ -34,13 +36,23 @@ export function UsersTable({ users, onEdit, onDelete }: UsersTableProps) {
             <TableCell>{user.email}</TableCell>
             <TableCell>{user.role}</TableCell>
             <TableCell>{user.status}</TableCell>
-            <TableCell>
-              <Button onClick={() => onEdit(user.id)} className="mr-2">
-                Edit
-              </Button>
-              <Button onClick={() => onDelete(user.id)} variant="destructive">
-                Delete
-              </Button>
+            <TableCell className="text-right">
+              <div className="flex justify-end gap-2">
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={() => onEdit(user.id)}
+                >
+                  Edit
+                </Button>
+                <Button
+                  variant="destructive"
+                  size="sm"
+                  onClick={() => onDelete(user.id)}
+                >
+                  Delete
+                </Button>
+              </div>
             </TableCell>
           </TableRow>
         ))}
@@ -48,4 +60,3 @@ export function UsersTable({ users, onEdit, onDelete }: UsersTableProps) {
     </Table>
   )
 }
-

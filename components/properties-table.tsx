@@ -1,9 +1,11 @@
+"use client"
+
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
 import { Button } from "@/components/ui/button"
 
 interface Property {
   id: string
-  name: string
+  title: string
   location: string
   price: number
   status: string
@@ -20,27 +22,37 @@ export function PropertiesTable({ properties, onEdit, onDelete }: PropertiesTabl
     <Table>
       <TableHeader>
         <TableRow>
-          <TableHead>Name</TableHead>
+          <TableHead>Title</TableHead>
           <TableHead>Location</TableHead>
           <TableHead>Price</TableHead>
           <TableHead>Status</TableHead>
-          <TableHead>Actions</TableHead>
+          <TableHead className="text-right">Actions</TableHead>
         </TableRow>
       </TableHeader>
       <TableBody>
         {properties.map((property) => (
           <TableRow key={property.id}>
-            <TableCell>{property.name}</TableCell>
+            <TableCell>{property.title}</TableCell>
             <TableCell>{property.location}</TableCell>
-            <TableCell>${property.price}/night</TableCell>
+            <TableCell>${property.price}</TableCell>
             <TableCell>{property.status}</TableCell>
-            <TableCell>
-              <Button onClick={() => onEdit(property.id)} className="mr-2">
-                Edit
-              </Button>
-              <Button onClick={() => onDelete(property.id)} variant="destructive">
-                Delete
-              </Button>
+            <TableCell className="text-right">
+              <div className="flex justify-end gap-2">
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={() => onEdit(property.id)}
+                >
+                  Edit
+                </Button>
+                <Button
+                  variant="destructive"
+                  size="sm"
+                  onClick={() => onDelete(property.id)}
+                >
+                  Delete
+                </Button>
+              </div>
             </TableCell>
           </TableRow>
         ))}
@@ -48,4 +60,3 @@ export function PropertiesTable({ properties, onEdit, onDelete }: PropertiesTabl
     </Table>
   )
 }
-

@@ -1,3 +1,5 @@
+"use client"
+
 import { BookingsTable } from "@/components/bookings-table"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 
@@ -17,9 +19,8 @@ export default function MyBookings() {
         <CardTitle>My Bookings</CardTitle>
       </CardHeader>
       <CardContent>
-        <BookingsTable bookings={bookings} onApprove={() => {}} onReject={handleCancel} />
+        <BookingsTable bookings={bookings} onCancel={handleCancel} />
       </CardContent>
     </Card>
   )
 }
-

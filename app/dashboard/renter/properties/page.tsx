@@ -1,3 +1,5 @@
+'use client'
+
 import MyProperties from "@/components/renter/my-properties"
 import DashboardLayout from "@/components/dashboard-layout"
 import { renterSidebarItems } from "@/lib/sidebar-items"

@@ -19,13 +19,47 @@ interface DashboardLayoutProps {
   userRole: string
 }
 
+function SidebarNav({ items }: { items: SidebarItem[] }) {
+  return (
+    <ScrollArea className="flex-1 px-3 py-2">
+      <div className="space-y-1">
+        {items.map((item) => (
+          <Link
+            key={item.href}
+            href={item.href}
+            className="flex items-center gap-3 rounded-lg px-3 py-2 text-sm transition-all hover:bg-accent"
+          >
+            {item.icon}
+            {item.label}
+          </Link>
+        ))}
+      </div>
+    </ScrollArea>
+  )
+}
+
+function ThemeToggle() {
+  const { theme, setTheme } = useTheme()
+  
+  return (
+    <Button
+      variant="ghost"
+      size="icon"
+      onClick={() => setTheme(theme === "light" ? "dark" : "light")}
+      className="h-9 w-9"
+    >
+      <Sun className="h-4 w-4 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
+      <Moon className="absolute h-4 w-4 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
+      <span className="sr-only">Toggle theme</span>
+    </Button>
+  )
+}
+
 export default function DashboardLayout({
   children,
   sidebarItems,
   userRole,
 }: DashboardLayoutProps) {
-  const { theme, setTheme } = useTheme()
-
   return (
     <div className="flex min-h-screen">
       {/* Sidebar */}
@@ -37,32 +71,10 @@ export default function DashboardLayout({
               <span>Ekrili</span>
             </Link>
           </div>
-          <ScrollArea className="flex-1 px-3 py-2">
-            <div className="space-y-1">
-              {sidebarItems.map((item) => (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  className="flex items-center gap-3 rounded-lg px-3 py-2 text-sm transition-all hover:bg-accent"
-                >
-                  {item.icon}
-                  {item.label}
-                </Link>
-              ))}
-            </div>
-          </ScrollArea>
+          <SidebarNav items={sidebarItems} />
           <div className="border-t p-4">
             <div className="flex items-center gap-4">
-              <Button
-                variant="ghost"
-                size="icon"
-                onClick={() => setTheme(theme === "light" ? "dark" : "light")}
-                className="h-9 w-9"
-              >
-                <Sun className="h-4 w-4 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
-                <Moon className="absolute h-4 w-4 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
-                <span className="sr-only">Toggle theme</span>
-              </Button>
+              <ThemeToggle />
               <Button variant="ghost" size="icon" className="h-9 w-9">
                 <LogOut className="h-4 w-4" />
                 <span className="sr-only">Log out</span>

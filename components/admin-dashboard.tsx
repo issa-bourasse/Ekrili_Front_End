@@ -8,6 +8,7 @@ import { UsersTable } from "./users-table"
 import { PropertiesTable } from "./properties-table"
 import { Notification } from "./notification"
 import { adminSidebarItems } from "@/lib/sidebar-items"
+import { BookingsTable } from "@/components/bookings-table"
 
 export default function AdminDashboard() {
   const [showNotification, setShowNotification] = useState(false)
@@ -19,8 +20,19 @@ export default function AdminDashboard() {
   ]
 
   const properties = [
-    { id: "1", name: "Cozy Apartment", location: "New York", price: 100, status: "Approved" },
-    { id: "2", name: "Beach House", location: "Miami", price: 200, status: "Pending" },
+    { id: "1", title: "Cozy Apartment", location: "New York", price: 100, status: "Approved" },
+    { id: "2", title: "Beach House", location: "Miami", price: 200, status: "Pending" },
+  ]
+
+  const bookings = [
+    {
+      id: "1",
+      property: "Luxury Apartment",
+      client: "John Doe",
+      dates: "Dec 1 - Dec 15, 2023",
+      status: "Pending",
+    },
+    // Add more bookings as needed
   ]
 
   const handleUserEdit = (id: string) => {
@@ -38,6 +50,22 @@ export default function AdminDashboard() {
 
   const handlePropertyReject = (id: string) => {
     // Handle property reject
+  }
+
+  const handleApprove = (id: string) => {
+    console.log("Approving booking:", id)
+  }
+
+  const handleReject = (id: string) => {
+    console.log("Rejecting booking:", id)
+  }
+
+  const handleEdit = (id: string) => {
+    console.log("Editing property:", id)
+  }
+
+  const handleDelete = (id: string) => {
+    console.log("Deleting property:", id)
   }
 
   return (
@@ -103,6 +131,15 @@ export default function AdminDashboard() {
             <PropertiesTable properties={properties} onEdit={handlePropertyApprove} onDelete={handlePropertyReject} />
           </CardContent>
         </Card>
+
+        <Card>
+          <CardHeader>
+            <CardTitle>Recent Bookings</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <BookingsTable bookings={bookings} onApprove={handleApprove} onReject={handleReject} />
+          </CardContent>
+        </Card>
       </div>
 
       {showNotification && (
@@ -111,4 +148,3 @@ export default function AdminDashboard() {
     </DashboardLayout>
   )
 }
-

@@ -1,3 +1,5 @@
+"use client"
+
 import { BookingsTable } from "@/components/bookings-table"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 
@@ -28,4 +30,3 @@ export default function Bookings() {
     </Card>
   )
 }
-

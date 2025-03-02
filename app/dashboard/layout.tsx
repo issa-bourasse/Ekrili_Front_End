@@ -1,16 +1,16 @@
-import { DashboardNav } from "@/components/dashboard/nav"
-import { auth } from "@/lib/auth"
-import { redirect } from "next/navigation"
+import { DashboardNav } from "@/components/dashboard/nav";
+import { getSession } from "@/lib/auth"; // Import getSession instead of auth
+import { redirect } from "next/navigation";
 
 export default async function DashboardLayout({
   children,
 }: {
   children: React.ReactNode
 }) {
-  const session = await auth()
+  const session = await getSession(); // Use getSession instead of auth()
   
   if (!session) {
-    redirect("/login")
+    redirect("/login");
   }
 
   return (
@@ -25,5 +25,5 @@ export default async function DashboardLayout({
         </main>
       </div>
     </div>
-  )
+  );
 }

@@ -2,43 +2,85 @@
 
 import type React from "react"
 import { useState } from "react"
+import { DateRange } from "react-day-picker"
 import { Button } from "@/components/ui/button"
+import { DateRangePicker } from "@/components/ui/date-range-picker"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
-import { DatePickerWithRange } from "@/components/ui/date-range-picker"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
+import { Textarea } from "@/components/ui/textarea"
 
-export function BookingForm() {
-  const [loading, setLoading] = useState(false)
+interface BookingFormProps {
+  onSubmit: (data: BookingFormData) => void
+}
+
+export interface BookingFormData {
+  name: string
+  email: string
+  dates: DateRange
+  message: string
+}
+
+export function BookingForm({ onSubmit }: BookingFormProps) {
+  const defaultEndDate = new Date()
+  defaultEndDate.setDate(defaultEndDate.getDate() + 7)
+
+  const [formData, setFormData] = useState<BookingFormData>({
+    name: "",
+    email: "",
+    dates: {
+      from: new Date(),
+      to: defaultEndDate, // Default to a week-long booking
+    },
+    message: "",
+  })
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault()
+    // Validate that dates are selected
+    if (!formData.dates.from || !formData.dates.to) {
+      alert("Please select both start and end dates")
+      return
+    }
+    onSubmit(formData)
+  }
 
   return (
-    <form className="space-y-4 w-full max-w-md">
+    <form onSubmit={handleSubmit} className="space-y-6">
       <div className="space-y-2">
-        <Label htmlFor="property">Property</Label>
-        <Select>
-          <SelectTrigger>
-            <SelectValue placeholder="Select a property" />
-          </SelectTrigger>
-          <SelectContent>
-            <SelectItem value="property1">Property 1</SelectItem>
-            <SelectItem value="property2">Property 2</SelectItem>
-          </SelectContent>
-        </Select>
+        <Label htmlFor="name">Name</Label>
+        <Input
+          id="name"
+          value={formData.name}
+          onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+          required
+        />
       </div>
-
+      <div className="space-y-2">
+        <Label htmlFor="email">Email</Label>
+        <Input
+          id="email"
+          type="email"
+          value={formData.email}
+          onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+          required
+        />
+      </div>
       <div className="space-y-2">
         <Label>Dates</Label>
-        <DatePickerWithRange className="w-full" />
+        <DateRangePicker
+          value={formData.dates}
+          onChange={(dates) => setFormData({ ...formData, dates: dates || formData.dates })}
+        />
       </div>
-
       <div className="space-y-2">
-        <Label htmlFor="guests">Number of Guests</Label>
-        <Input type="number" id="guests" min="1" />
+        <Label htmlFor="message">Message</Label>
+        <Textarea
+          id="message"
+          value={formData.message}
+          onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+        />
       </div>
-
-      <Button type="submit" className="w-full" disabled={loading}>
-        {loading ? "Creating booking..." : "Create Booking"}
-      </Button>
+      <Button type="submit">Submit Booking</Button>
     </form>
   )
 }

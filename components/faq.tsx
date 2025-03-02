@@ -42,7 +42,12 @@ export default function FAQ() {
   )
 }
 
-function FAQItem({ question, answer }) {
+interface FAQItemProps {
+  question: string;
+  answer: string;
+}
+
+function FAQItem({ question, answer }: FAQItemProps) {
   const [isOpen, setIsOpen] = useState(false)
 
   return (

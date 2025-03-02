@@ -1,98 +1,92 @@
 "use client"
 
 import { useState } from "react"
-import { BarChart, Home, Calendar, MessageSquare } from "lucide-react"
-import DashboardLayout from "./dashboard-layout"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { PropertiesTable } from "./properties-table"
 import { BookingsTable } from "./bookings-table"
-import { PropertyForm } from "./property-form"
-import { Notification } from "./notification"
-import { renterSidebarItems } from "@/lib/sidebar-items"
 
 export default function RenterDashboard() {
-  const [showNotification, setShowNotification] = useState(false)
-
   // Mock data
   const properties = [
-    { id: "1", name: "Cozy Apartment", location: "New York", price: 100, status: "Available" },
-    { id: "2", name: "Beach House", location: "Miami", price: 200, status: "Booked" },
+    { id: "1", title: "Luxury Villa", location: "Bali", price: 200, status: "Available" },
+    { id: "2", title: "Beach House", location: "Miami", price: 150, status: "Booked" },
   ]
 
   const bookings = [
-    { id: "1", property: "Cozy Apartment", client: "John Doe", dates: "Aug 1-5, 2023", status: "Pending" },
-    { id: "2", property: "Beach House", client: "Jane Smith", dates: "Aug 10-15, 2023", status: "Confirmed" },
+    { id: "1", property: "Luxury Villa", client: "John Doe", dates: "Mar 1-5, 2024", status: "Confirmed" },
+    { id: "2", property: "Beach House", client: "Jane Smith", dates: "Mar 10-15, 2024", status: "Pending" },
   ]
 
   const handlePropertyEdit = (id: string) => {
-    // Handle property edit
+    console.log("Edit property:", id)
   }
 
   const handlePropertyDelete = (id: string) => {
-    // Handle property delete
+    console.log("Delete property:", id)
   }
 
   const handleBookingApprove = (id: string) => {
-    // Handle booking approve
-    setShowNotification(true)
+    console.log("Approve booking:", id)
   }
 
   const handleBookingReject = (id: string) => {
-    // Handle booking reject
+    console.log("Reject booking:", id)
   }
 
   return (
-    <DashboardLayout sidebarItems={renterSidebarItems} userRole="Renter">
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+    <div className="p-6 space-y-6">
+      <h1 className="text-2xl font-bold">Renter Dashboard</h1>
+      
+      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Total Earnings</CardTitle>
-            <BarChart className="h-4 w-4 text-muted-foreground" />
+            <CardTitle className="text-sm font-medium">Total Properties</CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">$15,231.89</div>
-            <p className="text-xs text-muted-foreground">+20.1% from last month</p>
+            <div className="text-2xl font-bold">{properties.length}</div>
           </CardContent>
         </Card>
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">Active Bookings</CardTitle>
-            <Calendar className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">24</div>
-            <p className="text-xs text-muted-foreground">+5 new this week</p>
+            <div className="text-2xl font-bold">
+              {bookings.filter(b => b.status === "Confirmed").length}
+            </div>
           </CardContent>
         </Card>
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Properties Listed</CardTitle>
-            <Home className="h-4 w-4 text-muted-foreground" />
+            <CardTitle className="text-sm font-medium">Pending Bookings</CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">7</div>
-            <p className="text-xs text-muted-foreground">2 pending approval</p>
+            <div className="text-2xl font-bold">
+              {bookings.filter(b => b.status === "Pending").length}
+            </div>
           </CardContent>
         </Card>
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">New Messages</CardTitle>
-            <MessageSquare className="h-4 w-4 text-muted-foreground" />
+            <CardTitle className="text-sm font-medium">Total Revenue</CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">12</div>
-            <p className="text-xs text-muted-foreground">3 unread inquiries</p>
+            <div className="text-2xl font-bold">$1,234</div>
           </CardContent>
         </Card>
       </div>
 
-      <div className="space-y-8">
+      <div className="space-y-6">
         <Card>
           <CardHeader>
-            <CardTitle>My Properties</CardTitle>
+            <CardTitle>Your Properties</CardTitle>
           </CardHeader>
           <CardContent>
-            <PropertiesTable properties={properties} onEdit={handlePropertyEdit} onDelete={handlePropertyDelete} />
+            <PropertiesTable
+              properties={properties}
+              onEdit={handlePropertyEdit}
+              onDelete={handlePropertyDelete}
+            />
           </CardContent>
         </Card>
 
@@ -101,28 +95,14 @@ export default function RenterDashboard() {
             <CardTitle>Recent Bookings</CardTitle>
           </CardHeader>
           <CardContent>
-            <BookingsTable bookings={bookings} onApprove={handleBookingApprove} onReject={handleBookingReject} />
-          </CardContent>
-        </Card>
-
-        <Card>
-          <CardHeader>
-            <CardTitle>Add New Property</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <PropertyForm />
+            <BookingsTable
+              bookings={bookings}
+              onApprove={handleBookingApprove}
+              onReject={handleBookingReject}
+            />
           </CardContent>
         </Card>
       </div>
-
-      {showNotification && (
-        <Notification
-          message="Booking approved successfully!"
-          type="success"
-          onClose={() => setShowNotification(false)}
-        />
-      )}
-    </DashboardLayout>
+    </div>
   )
 }
-

@@ -1,32 +1,32 @@
-import { UsersTable } from "@/components/users-table"
+"use client"
+
+import dynamic from 'next/dynamic'
 import DashboardLayout from "@/components/dashboard-layout"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { adminSidebarItems } from "@/lib/sidebar-items"
 
-const users = [
-  { id: "1", name: "John Doe", email: "john@example.com", role: "Renter", status: "Active" },
-  { id: "2", name: "Jane Smith", email: "jane@example.com", role: "Client", status: "Active" },
-]
+// Renamed from 'dynamic' to 'dynamicConfig' to avoid conflict
+export const dynamicConfig = "force-dynamic"
+
+// Use dynamic import with ssr: false
+const UsersTable = dynamic(() => import("@/components/users-table"), {
+  ssr: false,
+  loading: () => <div className="flex items-center justify-center h-screen">Loading users...</div>
+})
 
 export default function AdminUsersPage() {
-  const handleEdit = (id: string) => {
-    // Handle edit
-  }
-
-  const handleDelete = (id: string) => {
-    // Handle delete
-  }
-
   return (
     <DashboardLayout sidebarItems={adminSidebarItems} userRole="Admin">
-      <Card>
-        <CardHeader>
-          <CardTitle>Manage Users</CardTitle>
-        </CardHeader>
-        <CardContent>
-          <UsersTable users={users} onEdit={handleEdit} onDelete={handleDelete} />
-        </CardContent>
-      </Card>
+      <div className="p-6">
+        <h1 className="text-2xl font-bold mb-6">Users Management</h1>
+        <UsersTable 
+          users={[
+            { id: "1", name: "John Doe", email: "john@example.com", role: "Renter", status: "Active" },
+            { id: "2", name: "Jane Smith", email: "jane@example.com", role: "Owner", status: "Active" },
+          ]} 
+          onEdit={(id) => console.log("Edit user:", id)}
+          onDelete={(id) => console.log("Delete user:", id)}
+        />
+      </div>
     </DashboardLayout>
   )
 }

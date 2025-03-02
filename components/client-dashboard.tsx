@@ -8,6 +8,7 @@ import { BookingsTable } from "./bookings-table"
 import { BookingForm } from "./booking-form"
 import { Notification } from "./notification"
 import { clientSidebarItems } from "@/lib/sidebar-items"
+import type { BookingFormData } from "./booking-form"
 
 export default function ClientDashboard() {
   const [showNotification, setShowNotification] = useState(false)
@@ -20,6 +21,12 @@ export default function ClientDashboard() {
 
   const handleBookingCancel = (id: string) => {
     // Handle booking cancellation
+    setShowNotification(true)
+  }
+
+  const handleBookingSubmit = (data: BookingFormData) => {
+    console.log("Booking submitted:", data)
+    // Here you would typically send this to your API
     setShowNotification(true)
   }
 
@@ -83,19 +90,18 @@ export default function ClientDashboard() {
             <CardTitle>Book a Property</CardTitle>
           </CardHeader>
           <CardContent>
-            <BookingForm />
+            <BookingForm onSubmit={handleBookingSubmit} />
           </CardContent>
         </Card>
       </div>
 
       {showNotification && (
         <Notification
-          message="Booking cancelled successfully!"
-          type="info"
+          message="Your action has been completed successfully."
+          type="success"
           onClose={() => setShowNotification(false)}
         />
       )}
     </DashboardLayout>
   )
 }
-

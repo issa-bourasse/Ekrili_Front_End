@@ -1,5 +1,14 @@
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
+"use client"
+
 import { Button } from "@/components/ui/button"
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table"
 
 interface Booking {
   id: string
@@ -11,11 +20,12 @@ interface Booking {
 
 interface BookingsTableProps {
   bookings: Booking[]
-  onApprove: (id: string) => void
-  onReject: (id: string) => void
+  onApprove?: (id: string) => void
+  onReject?: (id: string) => void
+  onCancel?: (id: string) => void
 }
 
-export function BookingsTable({ bookings, onApprove, onReject }: BookingsTableProps) {
+export function BookingsTable({ bookings, onApprove, onReject, onCancel }: BookingsTableProps) {
   return (
     <Table>
       <TableHeader>
@@ -24,7 +34,7 @@ export function BookingsTable({ bookings, onApprove, onReject }: BookingsTablePr
           <TableHead>Client</TableHead>
           <TableHead>Dates</TableHead>
           <TableHead>Status</TableHead>
-          <TableHead>Actions</TableHead>
+          <TableHead className="text-right">Actions</TableHead>
         </TableRow>
       </TableHeader>
       <TableBody>
@@ -34,13 +44,36 @@ export function BookingsTable({ bookings, onApprove, onReject }: BookingsTablePr
             <TableCell>{booking.client}</TableCell>
             <TableCell>{booking.dates}</TableCell>
             <TableCell>{booking.status}</TableCell>
-            <TableCell>
-              <Button onClick={() => onApprove(booking.id)} className="mr-2">
-                Approve
-              </Button>
-              <Button onClick={() => onReject(booking.id)} variant="destructive">
-                Reject
-              </Button>
+            <TableCell className="text-right">
+              <div className="flex justify-end gap-2">
+                {onApprove && booking.status === "Pending" && (
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    onClick={() => onApprove(booking.id)}
+                  >
+                    Approve
+                  </Button>
+                )}
+                {onReject && booking.status === "Pending" && (
+                  <Button
+                    variant="destructive"
+                    size="sm"
+                    onClick={() => onReject(booking.id)}
+                  >
+                    Reject
+                  </Button>
+                )}
+                {onCancel && booking.status === "Confirmed" && (
+                  <Button
+                    variant="destructive"
+                    size="sm"
+                    onClick={() => onCancel(booking.id)}
+                  >
+                    Cancel
+                  </Button>
+                )}
+              </div>
             </TableCell>
           </TableRow>
         ))}
@@ -48,4 +81,3 @@ export function BookingsTable({ bookings, onApprove, onReject }: BookingsTablePr
     </Table>
   )
 }
-

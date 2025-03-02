@@ -1,3 +1,4 @@
+'use client'
 import ManageClients from "@/components/admin/manage-clients"
 import DashboardLayout from "@/components/dashboard-layout"
 import { adminSidebarItems } from "@/lib/sidebar-items"

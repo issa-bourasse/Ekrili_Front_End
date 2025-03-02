@@ -1,3 +1,5 @@
+'use client'
+
 import Transactions from "@/components/admin/transactions"
 import DashboardLayout from "@/components/dashboard-layout"
 import { adminSidebarItems } from "@/lib/sidebar-items"

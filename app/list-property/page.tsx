@@ -1,3 +1,4 @@
+'use client'
 import ListProperty from "@/components/list-property"
 import Navbar from "@/components/navbar"
 import Footer from "@/components/footer"

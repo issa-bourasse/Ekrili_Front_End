@@ -1,3 +1,4 @@
+'use client'
 import Messages from "@/components/client/messages"
 import DashboardLayout from "@/components/dashboard-layout"
 import { clientSidebarItems } from "@/lib/sidebar-items"

@@ -1,3 +1,5 @@
+'use client'
+
 import StaffManagement from "@/components/renter/staff-management"
 import DashboardLayout from "@/components/dashboard-layout"
 import { renterSidebarItems } from "@/lib/sidebar-items"

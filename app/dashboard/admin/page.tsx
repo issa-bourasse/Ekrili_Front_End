@@ -7,9 +7,8 @@ import { adminSidebarItems } from "@/lib/sidebar-items"
 // Use the correct export name for dynamic rendering
 export const dynamic = "force-dynamic"
 
-// Use dynamic import with ssr: false
+// Use dynamic import
 const DashboardOverview = dynamic(() => import("@/components/admin/dashboard-overview"), {
-  ssr: false,
   loading: () => <div className="flex items-center justify-center h-screen">Loading dashboard...</div>
 })
 

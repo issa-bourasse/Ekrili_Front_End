@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "analyze": "next build && next export && next bundle-analyzer"
   },
   "dependencies": {
     "@emotion/is-prop-valid": "latest",

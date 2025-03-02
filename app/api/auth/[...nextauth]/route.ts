@@ -1,5 +1,7 @@
 'use client'
 
+export const dynamic = 'force-dynamic'
+
 import NextAuth from 'next-auth'
 import { authConfig } from '@/lib/auth.config'
 

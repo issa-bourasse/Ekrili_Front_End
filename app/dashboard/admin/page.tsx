@@ -1,4 +1,4 @@
-'use client'
+"use client"
 
 import dynamic from 'next/dynamic'
 import DashboardLayout from "@/components/dashboard-layout"
@@ -20,4 +20,3 @@ export default function AdminDashboardPage() {
     </DashboardLayout>
   )
 }
-

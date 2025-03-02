@@ -1,4 +1,4 @@
-'use client'
+"use client"
 
 import MyProperties from "@/components/renter/my-properties"
 import DashboardLayout from "@/components/dashboard-layout"
@@ -11,4 +11,3 @@ export default function RenterPropertiesPage() {
     </DashboardLayout>
   )
 }
-

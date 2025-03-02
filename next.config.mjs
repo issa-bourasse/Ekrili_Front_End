@@ -20,7 +20,10 @@ const nextConfig = {
     webpackBuildWorker: true,
     parallelServerBuildTraces: true,
     parallelServerCompiles: true,
+    serverComponentsExternalPackages: [],
   },
+  // Disable static page generation timeouts
+  staticPageGenerationTimeout: 180,
 }
 
 mergeConfig(nextConfig, userConfig)

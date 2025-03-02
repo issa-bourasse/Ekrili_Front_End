@@ -8,7 +8,7 @@ import { clientSidebarItems } from "@/lib/sidebar-items"
 export const dynamicConfig = "force-dynamic"
 
 // Use dynamic import with ssr: false
-const ClientDashboard = dynamic(() => import("@/components/client-dashboard"), {
+const ClientDashboard = dynamicImport(() => import("@/components/client-dashboard"), {
   ssr: false,
   loading: () => <div className="flex items-center justify-center h-screen">Loading dashboard...</div>
 })

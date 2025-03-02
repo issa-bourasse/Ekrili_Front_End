@@ -16,14 +16,15 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
+  // Disable experimental features that might be causing issues
   experimental: {
-    webpackBuildWorker: true,
-    parallelServerBuildTraces: true,
-    parallelServerCompiles: true,
+    // Disable all experimental features
     serverComponentsExternalPackages: [],
   },
-  // Disable static page generation timeouts
+  // Increase static page generation timeout
   staticPageGenerationTimeout: 180,
+  // Add trailingSlash for better compatibility with hosting providers
+  trailingSlash: true,
 }
 
 mergeConfig(nextConfig, userConfig)

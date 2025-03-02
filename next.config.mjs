@@ -25,6 +25,8 @@ const nextConfig = {
   staticPageGenerationTimeout: 180,
   // Add trailingSlash for better compatibility with hosting providers
   trailingSlash: true,
+  // Enable standalone build
+  output: 'standalone',
 }
 
 mergeConfig(nextConfig, userConfig)

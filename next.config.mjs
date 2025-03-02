@@ -16,13 +16,8 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
-  // Disable experimental features that might be causing issues
-  experimental: {
-    // Disable all experimental features
-    serverComponentsExternalPackages: [],
-  },
   // Increase static page generation timeout
-  staticPageGenerationTimeout: 180,
+  staticPageGenerationTimeout: 300,
   // Add trailingSlash for better compatibility with hosting providers
   trailingSlash: true,
 }

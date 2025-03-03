@@ -8,7 +8,7 @@ import { clientSidebarItems } from "@/lib/sidebar-items"
 export const dynamic = "force-dynamic"
 
 // Use dynamic import with ssr: false
-const BrowseProperties = dynamic(() => import("@/components/client/browse-properties"), {
+const BrowseProperties = dynamic(() => import("@/components/client/browse-properties").then(mod => mod.BrowseProperties), {
   ssr: false,
   loading: () => <div className="flex items-center justify-center h-screen">Loading properties...</div>
 })

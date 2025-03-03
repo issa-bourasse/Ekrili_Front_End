@@ -1,5 +1,6 @@
 {
   "tasks": {
-    "build": "npm run build"
+    "build": "npm run build",
+    "launch": "npm run dev"
   }
 }

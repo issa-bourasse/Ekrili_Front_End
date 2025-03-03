@@ -9,6 +9,8 @@ const DashboardOverview = dynamic(() => import("@/components/admin/dashboard-ove
   loading: () => <div className="flex items-center justify-center h-screen">Loading dashboard...</div>
 })
 
+export const dynamicConfig = "force-dynamic"
+
 export default function AdminDashboardPage() {
   return (
     <DashboardLayout sidebarItems={adminSidebarItems} userRole="Admin">

@@ -9,6 +9,8 @@ const Settings = dynamic(() => import("@/components/admin/settings"), {
   loading: () => <div className="flex items-center justify-center h-screen">Loading settings...</div>
 })
 
+export const dynamicConfig = "force-dynamic"
+
 export default function AdminSettingsPage() {
   return (
     <DashboardLayout sidebarItems={adminSidebarItems} userRole="Admin">

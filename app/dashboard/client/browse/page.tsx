@@ -4,9 +4,6 @@ import dynamic from 'next/dynamic'
 import DashboardLayout from "@/components/dashboard-layout"
 import { clientSidebarItems } from "@/lib/sidebar-items"
 
-// Use the correct export name for dynamic rendering
-export const dynamicConfig = "force-dynamic"
-
 // Use dynamic import with ssr: false
 const BrowseProperties = dynamic(() => import("@/components/client/browse-properties"), {
   ssr: false,

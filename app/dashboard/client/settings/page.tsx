@@ -4,8 +4,7 @@ import dynamic from 'next/dynamic'
 import DashboardLayout from "@/components/dashboard-layout"
 import { clientSidebarItems } from "@/lib/sidebar-items"
 
-// Next.js config for dynamic rendering
-export const dynamic = "force-dynamic"
+export const dynamicConfig = "force-dynamic"
 
 // Use dynamic import
 const Settings = dynamic(() => import("@/components/client/settings"), {

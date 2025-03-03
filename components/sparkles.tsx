@@ -54,6 +54,7 @@ export const SparklesCore = ({
       speedY: number
 
       constructor() {
+        if (!canvas) return
         this.x = Math.random() * canvas.width
         this.y = Math.random() * canvas.height
         this.size = Math.random() * (maxSize - minSize) + minSize
@@ -145,4 +146,3 @@ export const SparklesCore = ({
     />
   )
 }
-

@@ -5,7 +5,7 @@ import DashboardLayout from "@/components/dashboard-layout"
 import { clientSidebarItems } from "@/lib/sidebar-items"
 
 // Use the correct export name for dynamic rendering
-export const dynamicConfig = "force-dynamic"
+export const dynamic = "force-dynamic"
 
 // Use dynamic import with ssr: false
 const BrowseProperties = dynamic(() => import("@/components/client/browse-properties"), {

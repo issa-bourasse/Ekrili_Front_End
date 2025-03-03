@@ -51,7 +51,7 @@ export const SparklesCore = ({
       y: number = 0
       size: number = 0
       speedX: number = 0
-      speedY: number
+      speedY: number = 0
 
       constructor() {
         if (!canvas) return

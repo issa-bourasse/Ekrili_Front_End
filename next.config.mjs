@@ -19,8 +19,8 @@ const nextConfig = {
   // Disable experimental features that might be causing issues
   experimental: {
     // Disable all experimental features
-    serverComponentsExternalPackages: [],
   },
+  serverExternalPackages: [],
   // Increase static page generation timeout
   staticPageGenerationTimeout: 180,
   // Add trailingSlash for better compatibility with hosting providers

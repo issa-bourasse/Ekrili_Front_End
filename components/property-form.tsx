@@ -6,7 +6,6 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
-import { DatePickerWithRange } from "@/components/ui/date-range-picker"
 
 export function PropertyForm() {
   const [loading, setLoading] = useState(false)
@@ -40,7 +39,6 @@ export function PropertyForm() {
 
       <div className="space-y-2">
         <Label>Availability</Label>
-        <DatePickerWithRange className="w-full" />
       </div>
 
       <Button type="submit" className="w-full" disabled={loading}>

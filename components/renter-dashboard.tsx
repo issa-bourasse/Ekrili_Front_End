@@ -8,8 +8,8 @@ import { BookingsTable } from "./bookings-table"
 export default function RenterDashboard() {
   // Mock data
   const properties = [
-    { id: "1", title: "Luxury Villa", name: "Luxury Villa", location: "Bali", price: 200, status: "Available" },
-    { id: "2", title: "Beach House", name: "Beach House", location: "Miami", price: 150, status: "Booked" },
+    { id: "1", name: "Luxury Villa", location: "Bali", price: 200, status: "Available" },
+    { id: "2", name: "Beach House", location: "Miami", price: 150, status: "Booked" },
   ]
 
   const bookings = [

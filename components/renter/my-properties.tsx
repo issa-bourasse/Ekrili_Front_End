@@ -4,8 +4,8 @@ import { PropertiesTable } from "@/components/properties-table"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 
 const properties = [
-  { id: "1", name: "Cozy Apartment", location: "New York", price: 100, status: "Available" },
-  { id: "2", name: "Beach House", location: "Miami", price: 200, status: "Booked" },
+  { id: "1", title: "Cozy Apartment", location: "New York", price: 100, status: "Available" },
+  { id: "2", title: "Beach House", location: "Miami", price: 200, status: "Booked" },
 ]
 
 export default function MyProperties() {

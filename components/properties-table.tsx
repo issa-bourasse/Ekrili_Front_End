@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button"
 
 interface Property {
   id: string
-  title: string
+  name: string
   location: string
   price: number
   status: string
@@ -22,7 +22,7 @@ export function PropertiesTable({ properties, onEdit, onDelete }: PropertiesTabl
     <Table>
       <TableHeader>
         <TableRow>
-          <TableHead>Title</TableHead>
+          <TableHead>Name</TableHead>
           <TableHead>Location</TableHead>
           <TableHead>Price</TableHead>
           <TableHead>Status</TableHead>
@@ -32,7 +32,7 @@ export function PropertiesTable({ properties, onEdit, onDelete }: PropertiesTabl
       <TableBody>
         {properties.map((property) => (
           <TableRow key={property.id}>
-            <TableCell>{property.title}</TableCell>
+            <TableCell>{property.name}</TableCell>
             <TableCell>{property.location}</TableCell>
             <TableCell>${property.price}</TableCell>
             <TableCell>{property.status}</TableCell>

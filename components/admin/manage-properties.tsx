@@ -6,8 +6,8 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@
 import { Button } from "@/components/ui/button"
 
 const properties = [
-  { id: "1", title: "Cozy Apartment", location: "New York", owner: "John Doe", status: "Active" },
-  { id: "2", title: "Beach House", location: "Miami", owner: "Jane Smith", status: "Pending" },
+  { id: "1", name: "Cozy Apartment", location: "New York", owner: "John Doe", status: "Active" },
+  { id: "2", name: "Beach House", location: "Miami", owner: "Jane Smith", status: "Pending" },
 ]
 
 export default function ManageProperties() {
@@ -28,7 +28,7 @@ export default function ManageProperties() {
         <Table>
           <TableHeader>
             <TableRow>
-              <TableHead>Title</TableHead>
+              <TableHead>Name</TableHead>
               <TableHead>Location</TableHead>
               <TableHead>Owner</TableHead>
               <TableHead>Status</TableHead>
@@ -38,7 +38,7 @@ export default function ManageProperties() {
           <TableBody>
             {properties.map((property) => (
               <TableRow key={property.id}>
-                <TableCell>{property.title}</TableCell>
+                <TableCell>{property.name}</TableCell>
                 <TableCell>{property.location}</TableCell>
                 <TableCell>{property.owner}</TableCell>
                 <TableCell>{property.status}</TableCell>

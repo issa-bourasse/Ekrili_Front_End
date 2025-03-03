@@ -20,8 +20,8 @@ export default function AdminDashboard() {
   ]
 
   const properties = [
-    { id: "1", title: "Cozy Apartment", location: "New York", price: 100, status: "Approved" },
-    { id: "2", title: "Beach House", location: "Miami", price: 200, status: "Pending" },
+    { id: "1", title: "Cozy Apartment", name: "Cozy Apartment", location: "New York", price: 100, status: "Approved" },
+    { id: "2", title: "Beach House", name: "Beach House", location: "Miami", price: 200, status: "Pending" },
   ]
 
   const bookings = [

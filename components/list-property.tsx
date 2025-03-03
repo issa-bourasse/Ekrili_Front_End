@@ -18,7 +18,8 @@ export default function ListProperty() {
   })
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value, files } = e.target
+    const target = e.target as HTMLInputElement
+    const { name, value, files } = target
     setFormData((prevState) => ({
       ...prevState,
       [name]: files ? files : value,

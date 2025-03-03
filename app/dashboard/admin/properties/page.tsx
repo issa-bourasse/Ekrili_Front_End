@@ -9,6 +9,8 @@ const ManageProperties = dynamic(() => import("@/components/admin/manage-propert
   loading: () => <div className="flex items-center justify-center h-screen">Loading properties...</div>
 })
 
+export const dynamicConfig = "force-dynamic"
+
 export default function AdminPropertiesPage() {
   return (
     <DashboardLayout sidebarItems={adminSidebarItems} userRole="Admin">

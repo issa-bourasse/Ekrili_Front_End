@@ -46,7 +46,7 @@ export default function Features() {
   )
 }
 
-function Feature({ icon, title, description, delay }) {
+function Feature({ icon, title, description, delay }: { icon: React.ReactNode, title: string, description: string, delay: number }) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -60,4 +60,3 @@ function Feature({ icon, title, description, delay }) {
     </motion.div>
   )
 }
-

@@ -47,11 +47,13 @@ const AnimatedBackground = () => {
 
         if (this.size > 0.2) this.size -= 0.1
 
-        if (this.x > canvas.width || this.x < 0) {
-          this.speedX = -this.speedX
-        }
-        if (this.y > canvas.height || this.y < 0) {
-          this.speedY = -this.speedY
+        if (canvas) {
+          if (this.x > canvas.width || this.x < 0) {
+            this.speedX = -this.speedX
+          }
+          if (this.y > canvas.height || this.y < 0) {
+            this.speedY = -this.speedY
+          }
         }
       }
 

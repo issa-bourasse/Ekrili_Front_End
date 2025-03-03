@@ -26,10 +26,10 @@ export default function Navbar() {
       </div>
 
       <div className="hidden md:flex items-center space-x-4">
-        <Button variant="ghost" className="text-white hover:text-blue-400" asChild>
+        <Button variant="ghost" className="text-white hover:text-blue-400">
           <Link href="/login">Sign In</Link>
         </Button>
-        <Button className="bg-blue-600 hover:bg-blue-700 text-white" asChild>
+        <Button className="bg-blue-600 hover:bg-blue-700 text-white">
           <Link href="/signup">Sign Up</Link>
         </Button>
       </div>
@@ -49,4 +49,3 @@ function NavLink({ href, children }: { href: string; children: React.ReactNode }
     </Link>
   )
 }
-

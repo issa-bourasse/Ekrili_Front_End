@@ -17,15 +17,16 @@ export default function ListProperty() {
     images: null,
   })
 
-  const handleChange = (e) => {
-    const { name, value, files } = e.target
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const target = e.target as HTMLInputElement
+    const { name, value, files } = target
     setFormData((prevState) => ({
       ...prevState,
       [name]: files ? files : value,
     }))
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     console.log("Form submitted:", formData)
     // Handle form submission logic here
@@ -127,4 +128,3 @@ export default function ListProperty() {
     </div>
   )
 }
-

@@ -25,7 +25,7 @@ export default function MyProperties() {
         <CardTitle>My Properties</CardTitle>
       </CardHeader>
       <CardContent>
-        <PropertiesTable properties={properties} onEdit={handleEdit} onDelete={handleDelete} />
+        {/* <PropertiesTable properties={properties} onEdit={handleEdit} onDelete={handleDelete} /> */}
       </CardContent>
     </Card>
   )

@@ -40,7 +40,14 @@ export default function Testimonials() {
   )
 }
 
-function Testimonial({ name, role, content, delay }) {
+interface TestimonialProps {
+  name: string
+  role: string
+  content: string
+  delay: number
+}
+
+function Testimonial({ name, role, content, delay }: { name: string, role: string, content: string, delay: number }) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -59,4 +66,3 @@ function Testimonial({ name, role, content, delay }) {
     </motion.div>
   )
 }
-

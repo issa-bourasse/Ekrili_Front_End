@@ -12,3 +12,10 @@ export function formatDate(date: Date): string {
     year: 'numeric'
   })
 }
+
+export function formatDateRange(dateRange: DateRange): string {
+  const { from, to } = dateRange
+  if (!from) return "Invalid date range"
+  if (!to) return formatDate(from)
+  return `${formatDate(from)} - ${formatDate(to)}`
+}

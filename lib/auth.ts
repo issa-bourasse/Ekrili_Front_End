@@ -1,16 +1,26 @@
 import NextAuth from "next-auth";
-import { authConfig } from "./auth.config";
+import { User } from "next-auth";
 
-// Make sure this file correctly exports handlers
 export const { auth, signIn, signOut, handlers } = NextAuth({
-  ...authConfig,
   session: { 
     strategy: "jwt" 
   }
 });
 
-
-// Create a separate function to get the session
 export async function getSession() {
-  return await auth();
+  const session = await auth();
+  if (session && session.user) {
+    return {
+      id: session.user.id ?? "0",
+      name: session.user.name ?? "",
+      email: session.user.email ?? "",
+      image: session.user.image ?? ""
+    } as User;
+  }
+  return {
+    id: "0",
+    name: "",
+    email: "",
+    image: ""
+  } as User;
 }

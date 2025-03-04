@@ -6,7 +6,7 @@ import { adminSidebarItems } from "@/lib/sidebar-items"
 import Loading from "@/components/loading"
 
 const ManageClients = dynamic(
-  () => import("@/components/admin/manage-clients").then(mod => mod.default),
+  () => import("@/components/admin/manage-clients").then(mod => mod.ManageClients),
   {
     loading: () => <Loading />,
     ssr: false

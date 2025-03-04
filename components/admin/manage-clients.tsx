@@ -7,7 +7,7 @@ const clients = [
   { id: "2", name: "Bob Williams", email: "bob@example.com", bookings: 1, status: "Inactive" },
 ]
 
-export default function ManageClients() {
+export function ManageClients() {
   const handleEdit = (id: string) => {
     console.log("Editing client:", id)
   }

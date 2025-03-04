@@ -14,7 +14,7 @@ const ClientDashboard = dynamic(() => import("@/components/client-dashboard"), {
 export default function ClientDashboardPage() {
   return (
     <DashboardLayout sidebarItems={clientSidebarItems} userRole="Client">
-      <ClientDashboard />
+      {/* <ClientDashboard /> */}
     </DashboardLayout>
   )
 }

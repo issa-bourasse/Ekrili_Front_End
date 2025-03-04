@@ -1,4 +1,5 @@
 import NextAuth from "next-auth";
+import { User } from "next-auth";
 
 export const { auth, signIn, signOut, handlers } = NextAuth({
   session: { 
@@ -7,5 +8,13 @@ export const { auth, signIn, signOut, handlers } = NextAuth({
 });
 
 export async function getSession() {
-  return await auth();
+  const session = await auth();
+  if (session && session.user) {
+    return session.user as User;
+  }
+  return {
+    name: "",
+    email: "",
+    image: ""
+  } as User;
 }

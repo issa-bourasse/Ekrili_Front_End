@@ -47,7 +47,7 @@ interface TestimonialProps {
   delay: number
 }
 
-function Testimonial({ name, role, content, delay }: TestimonialProps) {
+function Testimonial({ name, role, content, delay }: { name: string, role: string, content: string, delay: number }) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}

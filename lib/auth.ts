@@ -10,7 +10,12 @@ export const { auth, signIn, signOut, handlers } = NextAuth({
 export async function getSession() {
   const session = await auth();
   if (session && session.user) {
-    return session.user as User;
+    return {
+      id: session.user.id ?? "0",
+      name: session.user.name ?? "",
+      email: session.user.email ?? "",
+      image: session.user.image ?? ""
+    } as User;
   }
   return {
     id: "0",

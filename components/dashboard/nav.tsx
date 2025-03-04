@@ -14,7 +14,7 @@ import {
 } from "@/components/ui/dropdown-menu"
 
 interface DashboardNavProps {
-  user: User
+  user: User & { id: string }
 }
 
 export function DashboardNav({ user }: DashboardNavProps) {

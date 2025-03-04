@@ -3,9 +3,9 @@
 import * as React from "react"
 import { CalendarIcon } from "lucide-react"
 import { DateRange } from "react-day-picker"
-import { addDays, format as formatDate } from "date-fns"
+import { addDays, format } from "date-fns"
 
-import { cn } from "@/lib/utils"
+import { cn, formatDateRange } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import { Calendar } from "@/components/ui/calendar"
 import {
@@ -16,7 +16,7 @@ import {
 
 interface DateRangePickerProps {
   value: DateRange
-  onChange: (value: DateRange) => void
+  onChange: (value: DateRange | undefined) => void
   className?: string
 }
 
@@ -41,11 +41,10 @@ export function DateRangePicker({
             {value?.from ? (
               value.to ? (
                 <>
-                  {formatDate(value.from, "LLL dd, y")} -{" "}
-                  {formatDate(value.to, "LLL dd, y")}
+                  {format(value.from, "LLL dd, y")} - {format(value.to, "LLL dd, y")}
                 </>
               ) : (
-                formatDate(value.from, "LLL dd, y")
+                format(value.from, "LLL dd, y")
               )
             ) : (
               <span>Pick a date</span>
@@ -58,7 +57,7 @@ export function DateRangePicker({
             mode="range"
             defaultMonth={value?.from}
             selected={value}
-            onSelect={onChange}
+            onSelect={(range) => onChange(range ?? undefined)}
             numberOfMonths={2}
           />
         </PopoverContent>

@@ -1,21 +1,16 @@
 import { DashboardNav } from "@/components/dashboard/nav";
-import { getSession } from "@/lib/auth"; // Import getSession instead of auth
-import { redirect } from "next/navigation";
+import { getSession } from "next-auth/react";
 
 export default async function DashboardLayout({
   children,
 }: {
   children: React.ReactNode
 }) {
-  const session = await getSession(); // Use getSession instead of auth()
-  
-  if (!session) {
-    redirect("/login");
-  }
+  const session = await getSession();
 
   return (
     <div className="flex min-h-screen flex-col space-y-6">
-      <DashboardNav user={session.user} />
+      <DashboardNav user={session?.user ? { id: session.user.id ?? "0", name: session.user.name ?? "", email: session.user.email ?? "", image: session.user.image ?? "" } : { id: "0", name: "", email: "", image: "" }} />
       <div className="container grid flex-1 gap-12 md:grid-cols-[200px_1fr]">
         <aside className="hidden w-[200px] flex-col md:flex">
           {/* Add your sidebar navigation here */}

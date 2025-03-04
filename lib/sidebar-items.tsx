@@ -36,3 +36,12 @@ export const clientSidebarItems: SidebarItem[] = [
   { icon: <CreditCard className="h-4 w-4" />, label: "Payments", href: "/dashboard/client/payments" },
   { icon: <Settings className="h-4 w-4" />, label: "Settings", href: "/dashboard/client/settings" },
 ]
+
+export function getSidebarItems(role: string): SidebarItem[] {
+  const items = {
+    client: clientSidebarItems,
+    renter: renterSidebarItems,
+    admin: adminSidebarItems
+  }
+  return items[role as keyof typeof items] || []
+}

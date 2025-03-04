@@ -1,13 +1,10 @@
-'use client'
-
-export const dynamic = 'force-dynamic'
-
 import NextAuth from 'next-auth'
 import { authConfig } from '@/lib/auth.config'
+
+export const dynamic = 'force-dynamic'
 
 // Create the handler directly in the route file
 const handler = NextAuth(authConfig)
 
 // Export the handler methods
-export const GET = handler.GET
-export const POST = handler.POST
+export { handler as GET, handler as POST }

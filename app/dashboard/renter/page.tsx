@@ -12,7 +12,7 @@ const RenterDashboard = dynamic(() => import("@/components/renter-dashboard"), {
 export default function RenterDashboardPage() {
   return (
     <DashboardLayout sidebarItems={renterSidebarItems} userRole="Renter">
-      {/* <RenterDashboard /> */}
+      <RenterDashboard />
     </DashboardLayout>
   )
 }

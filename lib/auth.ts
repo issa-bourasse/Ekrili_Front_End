@@ -13,6 +13,7 @@ export async function getSession() {
     return session.user as User;
   }
   return {
+    id: "0",
     name: "",
     email: "",
     image: ""

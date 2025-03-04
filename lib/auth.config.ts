@@ -6,7 +6,7 @@ export const authConfig: NextAuthOptions = {
     signIn: "/login",
   },
   callbacks: {
-    authorized({ auth, request: { nextUrl } }) {
+    authorize({ auth, request: { nextUrl } }) {
       const isLoggedIn = !!auth?.user;
       const isDashboard = nextUrl.pathname.startsWith("/dashboard");
       

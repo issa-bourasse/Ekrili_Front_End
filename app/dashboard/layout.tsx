@@ -10,7 +10,8 @@ export default async function DashboardLayout({
 
   return (
     <div className="flex min-h-screen flex-col space-y-6">
-      <DashboardNav user={session?.user ? { id: session.user.id ?? "0", name: session.user.name ?? "", email: session.user.email ?? "", image: session.user.image ?? "" } : { id: "0", name: "", email: "", image: "" }} />
+      <DashboardNav user={session?.user ? { /* id: session.user.id ?? "0", */ name: session.user.name ?? "", email: session.user.email ?? "", image: session.user.image ?? "" } : { /* id: "0", */ name: "", email: "", image: "" }} />
+      {/* The 'id' property is commented out due to a type error. A solution is needed to properly handle the 'id' property. */}
       <div className="container grid flex-1 gap-12 md:grid-cols-[200px_1fr]">
         <aside className="hidden w-[200px] flex-col md:flex">
           {/* Add your sidebar navigation here */}

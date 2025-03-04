@@ -3,9 +3,9 @@
 import * as React from "react"
 import { CalendarIcon } from "lucide-react"
 import { DateRange } from "react-day-picker"
-import { addDays, format as formatDate } from "date-fns"
+import { addDays } from "date-fns"
 
-import { cn } from "@/lib/utils"
+import { cn, formatDate } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import { Calendar } from "@/components/ui/calendar"
 import {
@@ -41,11 +41,11 @@ export function DateRangePicker({
             {value?.from ? (
               value.to ? (
                 <>
-                  {formatDate(value.from, "LLL dd, y")} -{" "}
-                  {formatDate(value.to, "LLL dd, y")}
+                  {formatDate(value.from)} -{" "}
+                  {formatDate(value.to)}
                 </>
               ) : (
-                formatDate(value.from, "LLL dd, y")
+                formatDate(value.from)
               )
             ) : (
               <span>Pick a date</span>

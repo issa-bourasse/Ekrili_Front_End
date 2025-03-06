@@ -21,6 +21,10 @@ const nextConfig = {
   staticPageGenerationTimeout: 180,
   trailingSlash: true,
   output: 'standalone',
+  onDemandEntries: {
+    maxInactiveAge: 25 * 1000,
+    pagesBufferLength: 2,
+  },
 }
 
 mergeConfig(nextConfig, userConfig)

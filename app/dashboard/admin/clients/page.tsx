@@ -5,6 +5,8 @@ import DashboardLayout from "@/components/dashboard-layout"
 import { adminSidebarItems } from "@/lib/sidebar-items"
 import Loading from "@/components/loading"
 import ManageClients from "@/components/admin/manage-clients"
+import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card"
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
 
 export default function AdminClientsPage() {
   const handleEdit = (id: string) => {

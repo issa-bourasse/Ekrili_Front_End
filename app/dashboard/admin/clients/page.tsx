@@ -7,7 +7,7 @@ import Loading from "@/components/loading"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
 import { Button } from "@/components/ui/button"
-import { clients } from "@/components/admin/manage-clients"
+import clients from "@/components/admin/manage-clients"
 
 const ManageClients = dynamic(
   () => import("@/components/admin/manage-clients").then(mod => mod.default),

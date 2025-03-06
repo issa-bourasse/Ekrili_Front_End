@@ -4,9 +4,6 @@ import dynamic from 'next/dynamic'
 import DashboardLayout from "@/components/dashboard-layout"
 import { adminSidebarItems } from "@/lib/sidebar-items"
 import Loading from "@/components/loading"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
-import { Button } from "@/components/ui/button"
 import ManageClients from "@/components/admin/manage-clients"
 
 export default function AdminClientsPage() {

@@ -36,22 +36,7 @@ export default function AdminClientsPage() {
               </TableRow>
             </TableHeader>
             <TableBody>
-              {clients.map((client) => (
-                <TableRow key={client.id}>
-                  <TableCell>{client.name}</TableCell>
-                  <TableCell>{client.email}</TableCell>
-                  <TableCell>{client.bookings}</TableCell>
-                  <TableCell>{client.status}</TableCell>
-                  <TableCell>
-                    <Button onClick={() => handleEdit(client.id)} className="mr-2">
-                      Edit
-                    </Button>
-                    <Button onClick={() => handleDelete(client.id)} variant="destructive">
-                      Delete
-                    </Button>
-                  </TableCell>
-                </TableRow>
-              ))}
+              <ManageClients />
             </TableBody>
           </Table>
         </CardContent>

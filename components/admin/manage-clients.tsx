@@ -2,7 +2,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
 import { Button } from "@/components/ui/button"
 
-const clients = [
+export const clients = [
   { id: "1", name: "Alice Johnson", email: "alice@example.com", bookings: 2, status: "Active" },
   { id: "2", name: "Bob Williams", email: "bob@example.com", bookings: 1, status: "Inactive" },
 ]
@@ -55,4 +55,3 @@ export default function ManageClients() {
     </Card>
   )
 }
-

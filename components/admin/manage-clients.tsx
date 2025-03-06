@@ -55,3 +55,5 @@ export default function ManageClients() {
     </Card>
   )
 }
+
+export { ManageClients }

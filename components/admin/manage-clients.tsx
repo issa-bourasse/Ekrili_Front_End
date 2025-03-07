@@ -16,6 +16,18 @@ export function ManageClients() {
     console.log("Deleting client:", id)
   }
 
+  // Ensure all functions and variables used within the ManageClients component are correctly defined and imported
+  if (!clients || !handleEdit || !handleDelete) {
+    console.error("Required functions or variables are missing in ManageClients component")
+    return null
+  }
+
+  // Verify that there are no issues with the data being passed to the ManageClients component
+  if (!Array.isArray(clients)) {
+    console.error("Clients data is not an array")
+    return null
+  }
+
   return (
     <Card>
       <CardHeader>
@@ -57,3 +69,4 @@ export function ManageClients() {
 }
 
 export default ManageClients
+export { clients }

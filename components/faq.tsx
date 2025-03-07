@@ -76,4 +76,3 @@ function FAQItem({ question, answer }: FAQItemProps) {
     </div>
   )
 }
-

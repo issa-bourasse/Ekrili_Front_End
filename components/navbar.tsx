@@ -31,6 +31,8 @@ export default function Navbar() {
         <NavLink href="/list-property">List Property</NavLink>
         <NavLink href="/how-it-works">How it Works</NavLink>
         <NavLink href="/about">About Us</NavLink>
+        <NavLink href="/contact">Contact</NavLink>
+        <NavLink href="/faq">FAQ</NavLink>
       </div>
 
       <div className="hidden md:flex items-center space-x-4">

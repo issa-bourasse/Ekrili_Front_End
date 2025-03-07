@@ -4,7 +4,15 @@ import { Button } from "@/components/ui/button"
 import { Home, Menu } from "lucide-react"
 import { motion } from "framer-motion"
 import Link from "next/link"
-import type React from "react"
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu"
 
 export default function Navbar() {
   return (
@@ -23,15 +31,32 @@ export default function Navbar() {
         <NavLink href="/list-property">List Property</NavLink>
         <NavLink href="/how-it-works">How it Works</NavLink>
         <NavLink href="/about">About Us</NavLink>
+        <NavLink href="/contact">Contact</NavLink>
+        <NavLink href="/faq">FAQ</NavLink>
       </div>
 
       <div className="hidden md:flex items-center space-x-4">
-        <Button variant="ghost" className="text-white hover:text-blue-400">
-          <Link href="/login">Sign In</Link>
-        </Button>
-        <Button className="bg-blue-600 hover:bg-blue-700 text-white">
-          <Link href="/signup">Sign Up</Link>
-        </Button>
+        <NavLink href="/login">Sign In</NavLink>
+        <NavLink href="/signup">Sign Up</NavLink>
+        <DropdownMenu>
+          <DropdownMenuTrigger asChild>
+            <Button variant="ghost" className="relative h-8 w-8 rounded-full">
+              <Avatar className="h-8 w-8">
+                <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
+                <AvatarFallback>SC</AvatarFallback>
+              </Avatar>
+            </Button>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent className="w-56" align="end" forceMount>
+            <DropdownMenuLabel>My Account</DropdownMenuLabel>
+            <DropdownMenuSeparator />
+            <DropdownMenuItem>Profile</DropdownMenuItem>
+            <DropdownMenuItem>Billing</DropdownMenuItem>
+            <DropdownMenuItem>Settings</DropdownMenuItem>
+            <DropdownMenuSeparator />
+            <DropdownMenuItem>Log out</DropdownMenuItem>
+          </DropdownMenuContent>
+        </DropdownMenu>
       </div>
 
       <Button variant="ghost" size="icon" className="md:hidden text-white">

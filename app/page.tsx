@@ -1,14 +1,13 @@
 import Hero from "@/components/hero"
 import Navbar from "@/components/navbar"
-import HowItWorks from "@/components/how-it-works"
+import Footer from "@/components/footer"
+import AnimatedBackground from "@/components/animated-background"
+import { FloatingKeys } from "@/components/floating-keys"
+import CallToAction from "@/components/call-to-action"
 import Features from "@/components/features"
 import Testimonials from "@/components/testimonials"
 import PopularCities from "@/components/popular-cities"
 import FAQ from "@/components/faq"
-import CallToAction from "@/components/call-to-action"
-import Footer from "@/components/footer"
-import AnimatedBackground from "@/components/animated-background"
-import { FloatingKeys } from "@/components/floating-keys"
 
 export default function Home() {
   return (
@@ -20,15 +19,13 @@ export default function Home() {
       <div className="relative z-10">
         <Navbar />
         <Hero />
-        <HowItWorks />
-        <Features />
-        <PopularCities />
-        <Testimonials />
-        <FAQ />
         <CallToAction />
+        <Features />
+        <Testimonials />
+        <PopularCities />
+        <FAQ />
         <Footer />
       </div>
     </main>
   )
 }
-
